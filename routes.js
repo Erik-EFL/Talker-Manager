@@ -15,12 +15,15 @@ const deleteTalker = require('./controllers/Usuario/deleteTalker');
 
 const routes = express.Router();
 
+/* Rota para procurar palestrantes por termos */
 routes.get('/talker/search', tokenValidate, searchTaker);
+/* Rota para visualizar todos os palestrantes */
 routes.get('/talker', readFileTalkers);
+/* Rota para pesquisar palestrantes por ID */
 routes.get('/talker/:id', talkerById);
-
+/* Rota para Login */
 routes.post('/login', validateUser, tokenGenerate);
-
+/* Rota para criar e validar novos palestrantes */
 routes.post('/talker',
 tokenValidate,
 nameValidation,
@@ -29,7 +32,7 @@ talkValidation,
 watchedAtValidation,
 reteValidation,
 addNewTalker);
-
+/* Rota para editar e validar novos palestrantes */
 routes.put('/talker/:id',
 tokenValidate,
 nameValidation,
@@ -38,7 +41,7 @@ talkValidation,
 watchedAtValidation,
 reteValidation,
 editTalker);
-
+/* Rota para deletar palestrantes existentes */
 routes.delete('/talker/:id', tokenValidate, deleteTalker);
 
 module.exports = routes;
